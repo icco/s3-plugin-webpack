@@ -5,13 +5,14 @@
   "main": "dist/s3_plugin.js",
   "scripts": {
     "build": "webpack",
-    "prepublish": "npm run lint && npm run test && npm run build",
+    "prepublish": "yarn run snyk-protect && npm run lint && npm run test && npm run build",
     "test": "NODE_ENV='test' mocha -t 10000 --compilers js:babel-register",
     "lint": "eslint ./src ./test",
     "watch": "webpack --watch",
     "prep:major": "npm run build && npm version major",
     "prep:minor": "npm run build && npm version minor",
-    "prep:patch": "npm run build && npm version patch"
+    "prep:patch": "npm run build && npm version patch",
+    "snyk-protect": "snyk protect"
   },
   "repository": {
     "type": "git",
@@ -36,7 +37,8 @@
     "lodash": "^4.13.0",
     "progress": "^1.1.8",
     "recursive-readdir": "^2.0.0",
-    "s3": "^4.4.0"
+    "s3": "^4.4.0",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "babel-loader": "^6.2.4",
@@ -53,5 +55,6 @@
     "mocha": "^2.5.3",
     "sinon": "^1.17.4",
     "webpack": "^1.13.1"
-  }
+  },
+  "snyk": true
 }
